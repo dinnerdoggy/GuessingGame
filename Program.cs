@@ -6,6 +6,25 @@ while (!exit)
 
     void StartGame()
     {
+        Console.WriteLine("Choose your difficulty:\n1. Easy\n2. Medium\n3. Hard\n4. Cheater");
+        int difficultyChoice = int.Parse(Console.ReadLine());
+        int lives = 0;
+        switch (difficultyChoice)
+        {
+            case 1:
+                lives = 8;
+                break;
+            case 2:
+                lives = 6;
+                break;
+            case 3:
+                lives = 4;
+                break;
+            case 4:
+                lives = int.MaxValue;
+                break;
+        }
+
         Random random = new Random();
         int secretNumber = random.Next(1, 101);
 
@@ -44,10 +63,10 @@ while (!exit)
             }
         }
 
-        int tries = 5;
-        for (int i = 0; i < 4; i++)
+        int tries = lives;
+        for (int i = 0; i < tries; i++)
         {
-            Console.WriteLine($"Attempts left: {--tries}");
+            Console.WriteLine((lives > 8) ? "Infinite attempts" : $"Attempts left: {--lives + 1}");
             Attempt();
             if (exit) break;
         }
