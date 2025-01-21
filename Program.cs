@@ -5,7 +5,10 @@ while (!exit)
     Console.Clear();
 
     void StartGame()
-    {   
+    {
+        Random random = new Random();
+        int secretNumber = random.Next(1, 101);
+
         void Attempt()
         {
             Console.Write("Guess the secret number (1-100): ");
@@ -15,7 +18,8 @@ while (!exit)
             Console.ReadLine();
 
             Console.Clear();
-            int secretNumber = 42;
+
+
 
             string success = "You've guessed correctly!";
             string failure = "Wrong.";
@@ -23,6 +27,7 @@ while (!exit)
             string message = userGuess == secretNumber ? success : failure;
 
             Console.WriteLine(message);
+            Console.WriteLine($"The secret number was {secretNumber}");
 
             if (message == success)
             {
