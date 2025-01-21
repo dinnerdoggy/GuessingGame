@@ -24,10 +24,19 @@ while (!exit)
             string success = "You've guessed correctly!";
             string failure = "Wrong.";
 
+            if (userGuess > secretNumber)
+            {
+                Console.WriteLine("The secret is a lower number");
+            }
+            if (userGuess < secretNumber)
+            {
+                Console.WriteLine("The secret is a higher number");
+            }
+
             string message = userGuess == secretNumber ? success : failure;
 
             Console.WriteLine(message);
-            Console.WriteLine($"The secret number was {secretNumber}");
+            // Console.WriteLine($"The secret number was {secretNumber}");
 
             if (message == success)
             {
