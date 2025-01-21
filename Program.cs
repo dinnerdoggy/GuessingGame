@@ -23,13 +23,19 @@ while (!exit)
             string message = userGuess == secretNumber ? success : failure;
 
             Console.WriteLine(message);
+
+            if (message == success)
+            {
+                PlayAgain();
+            }
         }
 
-        int tries = 0;
+        int tries = 5;
         for (int i = 0; i < 4; i++)
         {
-            Console.WriteLine($"Attempt: {++tries}");
+            Console.WriteLine($"Attempts left: {--tries}");
             Attempt();
+            if (exit) break;
         }
 
 
@@ -56,11 +62,12 @@ while (!exit)
                 default:
                     Console.Clear();
                     Console.WriteLine("Invalid Input");
+                    PlayAgain();
                     break;
             }
 
         }
-        PlayAgain();
+        if (!exit) PlayAgain();
     }
 
 
